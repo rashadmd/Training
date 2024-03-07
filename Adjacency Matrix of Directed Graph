@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <iomanip> // for setw
+using namespace std;
+
+void printAdjMatrix(const vector<vector<int>>& graph) {
+	cout << "Adjacency Matrix:" << endl;
+	cout << setw(3) << " ";
+	for (int i = 0; i < graph.size(); ++i) {
+    	cout << setw(3) << i;
+	}
+	cout << endl;
+
+	for (int i = 0; i < graph.size(); ++i) {
+    	cout << setw(3) << i;
+    	for (int j = 0; j < graph.size(); ++j) {
+        	cout << setw(3) << (graph[i][j] ? 1 : 0);
+    	}
+    	cout << endl;
+	}
+}
+
+int main() {
+	// Example directed graph represented as an adjacency list
+	vector<vector<int>> graph = {
+    	{0, 1, 1, 0, 0}, // Node 0 has outgoing edges to nodes 1 and 2
+    	{0, 0, 1, 1, 0}, // Node 1 has outgoing edges to nodes 2 and 3
+    	{0, 0, 0, 1, 0}, // Node 2 has an outgoing edge to node 3
+    	{0, 0, 0, 0, 1}, // Node 3 has an outgoing edge to node 4
+    	{1, 0, 0, 0, 0}  // Node 4 has an outgoing edge to node 0 (back edge)
+	};
+
+	printAdjMatrix(graph);
+
+	return 0;
+}
+
+
